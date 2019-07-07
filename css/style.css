@@ -1,0 +1,42 @@
+/* It should be noted that I HATE the rgb(r, g, b) format!
+I've got no idea why the creators of the color-picker plugin
+decided to make it the default, when #ffffff is much cleaner...*/
+body {
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+}
+h1 {
+  font-size: 300%;
+  text-align: center;
+  color: rgb(87, 206, 81);
+}
+h2 {
+  color: rgb(24, 245, 83);
+  font-size: 200%;
+}
+header {
+  background-color: rgb(31, 0, 33);
+}
+section {
+  padding: 10%;
+  float: left;
+  border: 3% dashed rgb(30, 0, 54);
+}
+article {
+  border: 3px dashed rgb(9, 9, 9);
+  padding: 10px;
+  background-color: rgb(31, 31, 31);
+}
+p {
+  padding: 5px;
+}
+#wrapper {
+  text-align: center;
+}
+#quizbutton {
+  font-size: 100%;
+  background-color: rgb(119, 41, 92);
+  color: rgb(255, 255, 255);
+  height: 32px;
+  width: 240px;
+}
