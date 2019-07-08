@@ -30,13 +30,21 @@ article {
 p {
   padding: 5px;
 }
-#wrapper {
-  text-align: center;
+ul, ol {
+  padding: 6px;
 }
-#quizbutton {
-  font-size: 100%;
-  background-color: rgb(119, 41, 92);
-  color: rgb(255, 255, 255);
-  height: 32px;
-  width: 240px;
+li {
+  display: block;
+  position: relative;
+  counter-increment: inst;
+  padding-left: 12px;
+  padding-top: 3px;
+}
+ul li::before {
+  content: "●";
+  padding-right: 14px;
+}
+ol li::before {
+  content: counter(inst);
+  padding-right: 14px;
 }

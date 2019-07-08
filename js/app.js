@@ -3,54 +3,85 @@
 var YES = 'y';
 var NO = 'n';
 
-function evaluateQuestion(question, expected, onTrue, onFalse) {
-  var answer = getAnswer(question);
-  if (answer === expected) {
-    console.log(`User answered question "${question}" correctly!`);
-    onTrue();
-    return 1;
+var ynQuestions = [
+  ['Is my name Kevin?', NO, 'Correct! I am not called Kevin.', 'No my name isn\'t KEVIN!'],
+  ['Have I been writing Java for 11 or more years?', NO, 'Correct, I have only been programming for about 9 or so years.', 'Wrong. I\'ve only been doing it for about 9 or so years.'],
+  ['Do I like the game RuneScape?', YES, 'Correct! I do indeed like playing RuneScape!', 'Wrong! I do like RuneScape...'],
+  ['Did I start out programming by making franken-bots?', YES, 'Correct! I did indeed make franken-bots, all of which were pretty terrible too.', 'Wrong! I did start out making franken-bots...'],
+  ['Do I like web-design?', NO, 'Correct! I am typically not a fan of designing web pages.', 'Wrong! I definitely prefer to work on the back end rather than the front end...']
+];
+
+var score = 0;
+var name = prompt('What\'s your name?');
+
+while (name.length < 2) {
+  name = prompt('No really, what\'s your name?');
+}
+
+var i;
+
+for (i = 0; i < ynQuestions.length; i++) {
+  var response;
+  while(!(response = prompt(ynQuestions[i][0])) || ((response = response.toLowerCase()[0]) !== YES && response !== NO)) {
+    alert(`"${response}" is not yes/no or y/n, case insensitive!`);
   }
-  console.log(`User answered question "${question}" incorrectly... :(`);
-  onFalse();
-  return 0;
-}
-
-function getAnswer(question) {
-  var prefix = prompt(question).toLowerCase()[0];
-  if (prefix !== YES && prefix !== NO) {
-    alert('You must answer yes, or no (y/n)... try again...');
-    return getAnswer(question);
+  if (response === ynQuestions[i][1]) {
+    alert(`${ynQuestions[i][2]}`);
+    score++;
+  } else {
+    alert(`${ynQuestions[i][3]}`);
   }
-  return prefix;
 }
 
-function quiz() {
+alert('Now for a little guessing game! You\'ve got 4 guesses, so give it your best!');
 
-  var points = 0;
+var number = Math.floor(Math.random() * 33);
+var guess;
 
-  points += evaluateQuestion('Is my name Kevin?', NO,
-    () => alert('Correct! I am NOT named Kevin....'),
-    () => alert('Wrong! How dare you call me Kevin!'));
-
-  points += evaluateQuestion('Have I been writing Java code for 10 years?', NO,
-    () => alert('Correct! I\'ve only been writing Java code for 9 or so years. (close enough though, right?)'),
-    () => alert('Wrong! I\'ve only been coding for about 8-9 years.'));
-
-  points += evaluateQuestion('Do I like the game RuneScape?', YES,
-    () => alert('Correct! I do indeed like playing RuneScape!'),
-    () => alert('Wrong! I do like RuneScape...'));
-
-  points += evaluateQuestion('Did I start out programming by making franken-bots?', YES,
-    () => alert('Correct! I did indeed make franken-bots, all of which were pretty terrible too.'),
-    () => alert('Wrong! I did start out making franken-bots...'));
-
-  points += evaluateQuestion('Do I like web-design?', NO,
-    () => alert('Correct! I am typically not a fan of designing web pages.'),
-    () => alert('Wrong! I definitely prefer to work on the back end rather than the front end...'));
-
-  var score = (points / 5) * 100;
-  console.log(`User recieved ${points} of 5 points, scoring ${score}%`);
-  alert(`Congratz! You got ${points} out of 5 points, for a score of ${score}%. Yay!`);
+console.log(`Expecting number: ${number}`);
+for (i = 0; i < 4; i++) {
+  guess = parseInt(prompt('What number am I thinking of? (0-32)'));
+  console.log(`User guessed: ${guess}, actually: ${number}`)
+  if (guess < number) {
+    alert('Too low! ' + (i < 3 ? 'Try again!' : 'Better luck next time!'));
+  } else if (guess > number) {
+    alert('Too high! ' + (i < 3 ? 'Try again!' : 'Better luck next time!'));
+  } else if (isNaN(guess) || guess === Infinity) {
+    alert('That\'s not even a real number! ' + (i < 3 ? 'Try again!' : 'Better luck next time!'));
+  } else {
+    alert('You got it! Awesome!');
+    score++;
+    break;
+  }
 }
 
-//alert('Carefully read the paragraph below, then press "Take Quiz" to take the quiz.');
+var knownLanguages = ['java', 'python', 'c', 'html', 'javascript', 'css', 'php'];
+var answers = '';
+
+for (i = 0; i < knownLanguages.length; i++) {
+  answers += (i === 0 ? '' : ', ') + knownLanguages[i];
+}
+
+alert('Finally, another little guessing game (but a lot less random!). Guess a programming language that I know.\nYou\'ve got 6 guesses, so give it your best!');
+for (i = 0; i < 6; i++) {
+  guess = prompt('Guess a language.').toLowerCase();
+  console.log(`User guessed: ${guess}, expecting one of: ${knownLanguages}`);
+  if (knownLanguages.indexOf(guess) >= 0) {
+    break;
+  }
+  alert('Nope! Try again...');
+}
+if (i === 6) {
+  alert(`Too bad! The correct answers are: ${answers}.`);
+} else {
+  alert(`Yay! A list of all correct answers is: ${answers}.`);
+  score++;
+}
+
+if (score === 7) {
+  alert(`Wow, ${name}, you scored all 7 points! Are you stalking me? ;)`);
+} else if (score <= 2) {
+  alert(`You scored ${score} of 7 points, you really don't know a thing about me, ${name}! this page will help!`);
+} else {
+  alert(`Nice, ${name}! You scored ${score} out of 7 points! Not bad!`)
+}
