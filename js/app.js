@@ -1,4 +1,5 @@
 'use strict';
+
 var YES = 'y';
 var NO = 'n';
 
@@ -34,7 +35,7 @@ for (i = 0; i < ynQuestions.length; i++) {
 
 alert('Now for a little guessing game! You\'ve got 4 guesses, so give it your best!');
 
-var number = Math.floor(Math.random() * 33);
+var number = ~~(Math.random() * 33); //~~ == Double NOT operator. Is fast Math.floor and always returns number, never NaN (0 if would be NaN)
 var guess;
 
 console.log(`Expecting number: ${number}`);
@@ -82,5 +83,5 @@ if (score === 7) {
 } else if (score <= 2) {
   alert(`You scored ${score} of 7 points, you really don't know a thing about me, ${name}! this page will help!`);
 } else {
-  alert(`Nice, ${name}! You scored ${score} out of 7 points! Not bad!`)
+  alert(`Nice, ${name}! You scored ${score} out of 7 points! Not bad!`);
 }
