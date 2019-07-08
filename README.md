@@ -1,9 +1,9 @@
 # deltav-201d4-lab-3
 <h1 id="lab-3">Lab 3</h1>
 
-<h3 id="author-studentgroup-name">Author: Calvin</h3>
+<h3 id="author-studentgroup-name">Author: Driver: Jacob Swenson Navigator: Calvin</h3>
 
-<h2 id="project-name">About Me (Part 2)</h2>
+<h2 id="project-name">About Me (Part 3)</h2>
 
 <p>Create a website which lists some about me information, and has a y/n quiz about me on it. The project must at least meet these requirements from the first lab:</p>
 <ul>
@@ -29,8 +29,4 @@
 </ul>
 
 <h3 id="reflections-and-comments">Reflections and Comments</h3>
-<p>Was relatively easy, as usual. The only hindrances were that, per the assignments requirements, I had to rewrite parts of the app.js from the previous project so that it doesn't define any functions. Also, the reset.css gets rid of the numbers and dots on lists, and so I did a bit of research to figure out how to get them back.</p>
-
-<h3 id="accessibility-picture">Google Accessibility Results</h3>
-
-![alt text](accessibility.png "Accessibility Results")
+<p>Good introduction to functions had a lot of help, will definitely need to work on it more.</p>
