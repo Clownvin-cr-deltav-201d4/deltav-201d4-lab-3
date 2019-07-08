@@ -1,5 +1,4 @@
 'use strict';
-
 var YES = 'y';
 var NO = 'n';
 
@@ -41,7 +40,7 @@ var guess;
 console.log(`Expecting number: ${number}`);
 for (i = 0; i < 4; i++) {
   guess = parseInt(prompt('What number am I thinking of? (0-32)'));
-  console.log(`User guessed: ${guess}, actually: ${number}`)
+  console.log(`User guessed: ${guess}, actually: ${number}`);
   if (guess < number) {
     alert('Too low! ' + (i < 3 ? 'Try again!' : 'Better luck next time!'));
   } else if (guess > number) {
