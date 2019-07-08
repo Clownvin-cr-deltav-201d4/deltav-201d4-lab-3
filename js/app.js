@@ -2,6 +2,29 @@
 
 var YES = 'y';
 var NO = 'n';
+var score = 0;
+function askQuestion(question, answer, correctGuess, wrongGuess){
+  var guess;
+  while (!(guess = prompt(question).toLowerCase()) || ((guess=guess[0])!==YES && guess !==NO));
+
+  if( guess === answer){
+    alert(correctGuess);
+    score++;
+  }
+  else{ 
+    alert(wrongGuess);
+  }
+}
+function quiz(){
+
+
+var name = prompt('What\'s your name?');
+
+while (name.length < 2) {
+  name = prompt('No really, what\'s your name?');
+}
+
+var i;
 
 var ynQuestions = [
   ['Is my name Kevin?', NO, 'Correct! I am not called Kevin.', 'No my name isn\'t KEVIN!'],
@@ -11,26 +34,12 @@ var ynQuestions = [
   ['Do I like web-design?', NO, 'Correct! I am typically not a fan of designing web pages.', 'Wrong! I definitely prefer to work on the back end rather than the front end...']
 ];
 
-var score = 0;
-var name = prompt('What\'s your name?');
 
-while (name.length < 2) {
-  name = prompt('No really, what\'s your name?');
-}
 
-var i;
 
 for (i = 0; i < ynQuestions.length; i++) {
-  var response;
-  while(!(response = prompt(ynQuestions[i][0])) || ((response = response.toLowerCase()[0]) !== YES && response !== NO)) {
-    alert(`"${response}" is not yes/no or y/n, case insensitive!`);
-  }
-  if (response === ynQuestions[i][1]) {
-    alert(`${ynQuestions[i][2]}`);
-    score++;
-  } else {
-    alert(`${ynQuestions[i][3]}`);
-  }
+  askQuestion(ynQuestions[i][0], ynQuestions[i][1],ynQuestions[i][2],ynQuestions[i][3]);
+  
 }
 
 alert('Now for a little guessing game! You\'ve got 4 guesses, so give it your best!');
@@ -85,3 +94,5 @@ if (score === 7) {
 } else {
   alert(`Nice, ${name}! You scored ${score} out of 7 points! Not bad!`);
 }
+}
+quiz();
